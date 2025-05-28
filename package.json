@@ -1,24 +1,24 @@
 {
-  "publisher": "antfu",
-  "name": "ext-name",
-  "displayName": "ext-name",
-  "version": "0.0.0",
+  "publisher": "showlotus",
+  "name": "vscode-open-in",
+  "displayName": "VSCode Open In",
+  "version": "0.0.1",
   "private": true,
   "packageManager": "pnpm@10.4.1",
-  "description": "",
-  "author": "Anthony Fu <anthonyfu117@hotmail.com>",
+  "description": "Open current file in browser",
+  "author": "showlotus <showlotus2000@gmail.com>",
   "license": "MIT",
-  "funding": "https://github.com/sponsors/antfu",
-  "homepage": "https://github.com/antfu/ext-name#readme",
+  "funding": "https://github.com/sponsors/showlotus",
+  "homepage": "https://github.com/showlotus/vscode-open-in#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/antfu/ext-name"
+    "url": "https://github.com/showlotus/vscode-open-in"
   },
   "bugs": {
-    "url": "https://github.com/antfu/ext-name/issues"
+    "url": "https://github.com/showlotus/vscode-open-in/issues"
   },
   "sponsor": {
-    "url": "https://github.com/sponsors/antfu"
+    "url": "https://github.com/sponsors/showlotus"
   },
   "categories": [
     "Other"
@@ -31,17 +31,59 @@
     "res/*"
   ],
   "engines": {
-    "vscode": "^1.97.0"
+    "vscode": "^1.85.0"
   },
   "activationEvents": [
     "onStartupFinished"
   ],
+  "extensionPack": [
+    "fabiospampinato.vscode-open-in-github"
+  ],
   "contributes": {
-    "commands": [],
+    "commands": [
+      {
+        "command": "vscodeOpenIn.openGitLab",
+        "title": "VSCode Open In: Open in GitLab"
+      },
+      {
+        "command": "vscodeOpenIn.openMatrix",
+        "title": "VSCode Open In: Open in Matrix"
+      },
+      {
+        "command": "vscodeOpenIn.signIn",
+        "title": "VSCode Open In: Sign In"
+      },
+      {
+        "command": "vscodeOpenIn.signOut",
+        "title": "VSCode Open In: Sign Out"
+      }
+    ],
     "configuration": {
       "type": "object",
-      "title": "ext-name",
-      "properties": {}
+      "title": "vscode-open-in",
+      "properties": {
+        "vscodeOpenIn.gitToMatrixMap": {
+          "type": "object",
+          "description": "Git 地址到 Matrix 地址的映射关系，key 为 Git 地址，value 为 Matrix 地址",
+          "default": {}
+        }
+      }
+    },
+    "icons": {
+      "icon-matrix": {
+        "description": "Matrix",
+        "default": {
+          "fontPath": "res/fonts/icomoon.woff",
+          "fontCharacter": "\\e902"
+        }
+      },
+      "icon-gitlab": {
+        "description": "GitLab",
+        "default": {
+          "fontPath": "res/fonts/icomoon.woff",
+          "fontCharacter": "\\e903"
+        }
+      }
     }
   },
   "scripts": {

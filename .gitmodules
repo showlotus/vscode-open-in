@@ -1,0 +1,3 @@
+[submodule "external/vscode-open-in-github"]
+	path = external/vscode-open-in-github
+	url = https://github.com/fabiospampinato/vscode-open-in-github.git

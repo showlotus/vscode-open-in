@@ -1,0 +1,13 @@
+{
+  "project": {
+    "name": "vscode-open-in",
+    "description": "VSCode 扩展开发项目",
+    "type": "vscode-extension"
+  },
+  "context": {
+    "urls": [
+      "https://kermanx.com/reactive-vscode/guide/",
+      "https://code.visualstudio.com/api"
+    ]
+  }
+}
