@@ -1,5 +1,5 @@
-import type { AuthenticationProvider, AuthenticationProviderAuthenticationSessionsChangeEvent, AuthenticationSession } from 'vscode'
-import { EventEmitter, ProgressLocation, window, Memento } from 'vscode'
+import type { AuthenticationProvider, AuthenticationProviderAuthenticationSessionsChangeEvent, AuthenticationSession, Memento } from 'vscode'
+import { EventEmitter, ProgressLocation, window } from 'vscode'
 import { fetchCookieLogin, fetchLogin } from './request'
 import { showMessage } from './utils'
 
@@ -166,13 +166,12 @@ export class CustomAuthProvider implements AuthenticationProvider {
     }
     // 显示确认对话框
     const result = await window.showWarningMessage(
-      'VSCode Open In - 确认退出登录',
+      'VSCode Open In',
       {
         modal: true,
         detail: '确定要退出登录吗？',
       },
       '确定',
-      '取消',
     )
     if (result === '确定') {
       try {
