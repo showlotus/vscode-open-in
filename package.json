@@ -37,9 +37,6 @@
   "activationEvents": [
     "onStartupFinished"
   ],
-  "extensionPack": [
-    "fabiospampinato.vscode-open-in-github"
-  ],
   "contributes": {
     "commands": [
       {
