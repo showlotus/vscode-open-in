@@ -53,3 +53,19 @@
 - 使用 TypeScript 开发
 - 基于 reactive-vscode 框架
 - 依赖 vscode-open-in-github 插件
+
+### 安装依赖
+
+```shell
+pnpm i
+```
+
+### 启动本地服务端
+
+```shell
+cd server && pnpm dev
+```
+
+### 打开调试
+
+快捷键 `F5` 打开调试
