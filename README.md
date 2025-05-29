@@ -2,6 +2,10 @@
 
 一个用于快速在浏览器中打开当前文件对应 GitLab 和 Matrix 页面的 VSCode 扩展插件。
 
+![VSCode Open In GitLab](https://raw.githubusercontent.com/showlotus/vscode-open-in/main/docs-res/gitlab.png)
+
+![VSCode Open In Matrix](https://raw.githubusercontent.com/showlotus/vscode-open-in/main/docs-res/matrix.png)
+
 ## 功能特性 ✨
 
 - 🔗 支持在浏览器中打开当前文件对应的 GitLab 仓库页面
@@ -35,12 +39,12 @@
 
 <!-- commands -->
 
-| Command                   | Title                          |
-| ------------------------- | ------------------------------ |
-| `vscodeOpenIn.openGitLab` | VSCode Open In: Open in GitLab |
-| `vscodeOpenIn.openMatrix` | VSCode Open In: Open in Matrix |
-| `vscodeOpenIn.signIn`     | VSCode Open In: Sign In        |
-| `vscodeOpenIn.signOut`    | VSCode Open In: Sign Out       |
+| Command                   | Title                          | Description |
+| ------------------------- | ------------------------------ | ----------- |
+| `vscodeOpenIn.openGitLab` | VSCode Open In: Open in GitLab | Open the current project in GitLab |
+| `vscodeOpenIn.openMatrix` | VSCode Open In: Open in Matrix | Open the current project in Matrix |
+| `vscodeOpenIn.signIn`     | VSCode Open In: Sign In        | Sign in to Matrix |
+| `vscodeOpenIn.signOut`    | VSCode Open In: Sign Out       | Sign out of Matrix |
 
 <!-- commands -->
 
