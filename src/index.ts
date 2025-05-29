@@ -14,9 +14,9 @@ function openInExternal(url: string) {
   env.openExternal(uri)
 }
 
-const { activate, deactivate } = defineExtension(() => {
+const { activate, deactivate } = defineExtension((context) => {
   // 注册认证提供者
-  const authProvider = new CustomAuthProvider()
+  const authProvider = new CustomAuthProvider(context.globalState)
   const disposable = authentication.registerAuthenticationProvider('vscode-open-in', 'VSCode Open In', authProvider)
 
   // 注册 GitLab 图标

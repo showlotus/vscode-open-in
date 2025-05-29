@@ -1,5 +1,5 @@
 import type { AuthenticationProvider, AuthenticationProviderAuthenticationSessionsChangeEvent, AuthenticationSession } from 'vscode'
-import { EventEmitter, ProgressLocation, window } from 'vscode'
+import { EventEmitter, ProgressLocation, window, Memento } from 'vscode'
 import { fetchCookieLogin, fetchLogin } from './request'
 import { showMessage } from './utils'
 
@@ -9,6 +9,14 @@ export class CustomAuthProvider implements AuthenticationProvider {
   private _sessions: AuthenticationSession[] = []
   // 用于通知认证会话变化
   private _onDidChangeSessions = new EventEmitter<AuthenticationProviderAuthenticationSessionsChangeEvent>()
+  // 用于持久化存储
+  private _memento: Memento
+
+  constructor(memento: Memento) {
+    this._memento = memento
+    // 从持久化存储中恢复会话
+    this._sessions = this._memento.get<AuthenticationSession[]>('sessions', [])
+  }
 
   // 获取认证会话变化事件
   get onDidChangeSessions() {
@@ -18,6 +26,11 @@ export class CustomAuthProvider implements AuthenticationProvider {
   // 获取所有认证会话
   async getSessions(): Promise<AuthenticationSession[]> {
     return this._sessions
+  }
+
+  // 保存会话到持久化存储
+  private async _saveSessions() {
+    await this._memento.update('sessions', this._sessions)
   }
 
   // 创建新的认证会话（无参数，内部弹出表单）
@@ -103,6 +116,7 @@ export class CustomAuthProvider implements AuthenticationProvider {
           }
 
           this._sessions.push(session)
+          await this._saveSessions()
           this._onDidChangeSessions.fire({ added: [session], removed: [], changed: [] })
           resolve(session)
           showMessage('登录成功！', 'info')
@@ -119,6 +133,7 @@ export class CustomAuthProvider implements AuthenticationProvider {
     const session = this._sessions.find(s => s.id === sessionId)
     if (session) {
       this._sessions = this._sessions.filter(s => s.id !== sessionId)
+      await this._saveSessions()
       this._onDidChangeSessions.fire({ added: [], removed: [session], changed: [] })
     }
   }
